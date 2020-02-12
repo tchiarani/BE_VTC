@@ -2,6 +2,8 @@
 
 namespace App\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -30,6 +32,16 @@ class Client
      * @ORM\Column(type="string", length=255)
      */
     private $portable;
+
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\Paiement", mappedBy="IdClient", orphanRemoval=true)
+     */
+    private $paiements;
+
+    public function __construct()
+    {
+        $this->paiements = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -68,6 +80,37 @@ class Client
     public function setPortable(string $portable): self
     {
         $this->portable = $portable;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Paiement[]
+     */
+    public function getPaiements(): Collection
+    {
+        return $this->paiements;
+    }
+
+    public function addPaiement(Paiement $paiement): self
+    {
+        if (!$this->paiements->contains($paiement)) {
+            $this->paiements[] = $paiement;
+            $paiement->setIdClient($this);
+        }
+
+        return $this;
+    }
+
+    public function removePaiement(Paiement $paiement): self
+    {
+        if ($this->paiements->contains($paiement)) {
+            $this->paiements->removeElement($paiement);
+            // set the owning side to null (unless already changed)
+            if ($paiement->getIdClient() === $this) {
+                $paiement->setIdClient(null);
+            }
+        }
 
         return $this;
     }
