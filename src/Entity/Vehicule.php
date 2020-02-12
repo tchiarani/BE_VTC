@@ -2,6 +2,8 @@
 
 namespace App\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -46,6 +48,16 @@ class Vehicule
      * @ORM\JoinColumn(nullable=false)
      */
     private $PermisNecessaire;
+
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\Revision", mappedBy="Immat", orphanRemoval=true)
+     */
+    private $revisions;
+
+    public function __construct()
+    {
+        $this->revisions = new ArrayCollection();
+    }
 
     public function getImmat(): ?int
     {
@@ -127,6 +139,37 @@ class Vehicule
     public function setPermisNecessaire(?Permis $PermisNecessaire): self
     {
         $this->PermisNecessaire = $PermisNecessaire;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Revision[]
+     */
+    public function getRevisions(): Collection
+    {
+        return $this->revisions;
+    }
+
+    public function addRevision(Revision $revision): self
+    {
+        if (!$this->revisions->contains($revision)) {
+            $this->revisions[] = $revision;
+            $revision->setImmat($this);
+        }
+
+        return $this;
+    }
+
+    public function removeRevision(Revision $revision): self
+    {
+        if ($this->revisions->contains($revision)) {
+            $this->revisions->removeElement($revision);
+            // set the owning side to null (unless already changed)
+            if ($revision->getImmat() === $this) {
+                $revision->setImmat(null);
+            }
+        }
 
         return $this;
     }
