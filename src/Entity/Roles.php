@@ -27,7 +27,7 @@ class Roles
         $this->employes = new ArrayCollection();
     }
 
-    public function getNom(): ?int
+    public function getNom(): ?string
     {
         return $this->NomRole;
     }
