@@ -54,9 +54,15 @@ class Vehicule
      */
     private $revisions;
 
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\Transactions", mappedBy="Immat", orphanRemoval=true)
+     */
+    private $transactions;
+
     public function __construct()
     {
         $this->revisions = new ArrayCollection();
+        $this->transactions = new ArrayCollection();
     }
 
     public function getImmat(): ?int
@@ -168,6 +174,37 @@ class Vehicule
             // set the owning side to null (unless already changed)
             if ($revision->getImmat() === $this) {
                 $revision->setImmat(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Transactions[]
+     */
+    public function getTransactions(): Collection
+    {
+        return $this->transactions;
+    }
+
+    public function addTransaction(Transactions $transaction): self
+    {
+        if (!$this->transactions->contains($transaction)) {
+            $this->transactions[] = $transaction;
+            $transaction->setImmat($this);
+        }
+
+        return $this;
+    }
+
+    public function removeTransaction(Transactions $transaction): self
+    {
+        if ($this->transactions->contains($transaction)) {
+            $this->transactions->removeElement($transaction);
+            // set the owning side to null (unless already changed)
+            if ($transaction->getImmat() === $this) {
+                $transaction->setImmat(null);
             }
         }
 
