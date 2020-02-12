@@ -54,7 +54,7 @@ class Client
         return $this->idClient;
     }
 
-    public function getNom(): ?string
+    public function getNOMCLIENT(): ?string
     {
         return $this->nomClient;
     }
