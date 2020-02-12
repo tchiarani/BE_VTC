@@ -18,3 +18,4 @@
 symfony.exe
 .php-version
 .idea/
+.env.local
