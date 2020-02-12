@@ -13,9 +13,9 @@ class Permis
 {
     /**
      * @ORM\Id()
-     * @ORM\Column(type="string", length=10, name="Permis")
+     * @ORM\Column(type="string", length=10)
      */
-    private $Permis;
+    private $id;
 
     /**
      * @ORM\OneToMany(targetEntity="App\Entity\Inclus", mappedBy="PermisInclus", orphanRemoval=true)
@@ -39,9 +39,14 @@ class Permis
         $this->vehicules = new ArrayCollection();
     }
 
+    public function getId(): ?string
+    {
+        return $this->id;
+    }
+
     public function getPermis(): ?string
     {
-        return $this->Permis;
+        return $this->id;
     }
 
     public function setPermis(string $permis): self

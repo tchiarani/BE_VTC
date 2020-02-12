@@ -12,9 +12,9 @@ class Transactions
     /**
      * @ORM\Id()
      * @ORM\GeneratedValue()
-     * @ORM\Column(type="integer", name="IdTransaction")
+     * @ORM\Column(type="integer")
      */
-    private $IdTransaction;
+    private $id;
 
     /**
      * @ORM\Column(type="integer")
@@ -76,7 +76,7 @@ class Transactions
 
     public function getId(): ?int
     {
-        return $this->IdTransaction;
+        return $this->id;
     }
 
     public function getNbKilometres(): ?int

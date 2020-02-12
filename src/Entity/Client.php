@@ -14,9 +14,9 @@ class Client
     /**
      * @ORM\Id()
      * @ORM\GeneratedValue()
-     * @ORM\Column(type="integer", name="idclient")
+     * @ORM\Column(type="integer")
      */
-    private $idClient;
+    private $id;
 
     /**
      * @ORM\Column(type="string", length=255, name="nomClient")
@@ -51,7 +51,7 @@ class Client
 
     public function getId(): ?int
     {
-        return $this->idClient;
+        return $this->id;
     }
 
     public function getNom(): ?string

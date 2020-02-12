@@ -16,7 +16,7 @@ class Chauffeur
      * @ORM\GeneratedValue()
      * @ORM\Column(type="integer")
      */
-    private $idChauffeur;
+    private $id;
 
     /**
      * @ORM\Column(type="boolean")
@@ -47,7 +47,7 @@ class Chauffeur
 
     public function getId(): ?int
     {
-        return $this->idChauffeur;
+        return $this->id;
     }
 
     public function getChauffeurActif(): ?bool

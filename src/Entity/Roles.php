@@ -13,9 +13,9 @@ class Roles
 {
     /**
      * @ORM\Id()
-     * @ORM\Column(type="string", length=10, name="NomRole")
+     * @ORM\Column(type="string", length=10)
      */
-    private $NomRole;
+    private $id;
 
     /**
      * @ORM\OneToMany(targetEntity="App\Entity\Employe", mappedBy="NomRole", orphanRemoval=true)
@@ -27,14 +27,19 @@ class Roles
         $this->employes = new ArrayCollection();
     }
 
+    public function getId(): ?string
+    {
+        return $this->id;
+    }
+
     public function getNom(): ?string
     {
-        return $this->NomRole;
+        return $this->id;
     }
 
     public function setNom(string $nom): self
     {
-        $this->NomRole = $nom;
+        $this->id = $nom;
 
         return $this;
     }

@@ -12,9 +12,9 @@ class Revision
     /**
      * @ORM\Id()
      * @ORM\GeneratedValue()
-     * @ORM\Column(type="integer", name="IdRev")
+     * @ORM\Column(type="integer")
      */
-    private $IdRev;
+    private $id;
 
     /**
      * @ORM\Column(type="date")
@@ -39,7 +39,7 @@ class Revision
 
     public function getId(): ?int
     {
-        return $this->IdRev;
+        return $this->id;
     }
 
     public function getDateRev(): ?\DateTimeInterface

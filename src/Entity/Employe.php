@@ -12,9 +12,9 @@ class Employe
     /**
      * @ORM\Id()
      * @ORM\GeneratedValue()
-     * @ORM\Column(type="integer", name="IdEmp")
+     * @ORM\Column(type="integer")
      */
-    private $idEmp;
+    private $id;
 
     /**
      * @ORM\Column(type="string", length=10)
@@ -59,7 +59,7 @@ class Employe
 
     public function getId(): ?int
     {
-        return $this->idEmp;
+        return $this->id;
     }
 
     public function getNomEmp(): ?string

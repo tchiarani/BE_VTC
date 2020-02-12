@@ -14,9 +14,9 @@ class Vehicule
     /**
      * @ORM\Id()
      * @ORM\GeneratedValue()
-     * @ORM\Column(type="string", length=10, name="Immat")
+     * @ORM\Column(type="string", length=10)
      */
-    private $Immat;
+    private $id;
 
     /**
      * @ORM\Column(type="integer")
@@ -65,9 +65,14 @@ class Vehicule
         $this->transactions = new ArrayCollection();
     }
 
+    public function getId(): ?int
+    {
+        return $this->id;
+    }
+
     public function getImmat(): ?int
     {
-        return $this->Immat;
+        return $this->id;
     }
 
     public function setImmat(string $Immat): self
