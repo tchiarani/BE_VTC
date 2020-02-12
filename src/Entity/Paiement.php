@@ -12,9 +12,9 @@ class Paiement
     /**
      * @ORM\Id()
      * @ORM\GeneratedValue()
-     * @ORM\Column(type="integer")
+     * @ORM\Column(type="integer", name="IdCB")
      */
-    private $id;
+    private $idCB;
 
     /**
      * @ORM\Column(type="string", length=10)
@@ -34,7 +34,7 @@ class Paiement
 
     public function getId(): ?int
     {
-        return $this->id;
+        return $this->idCB;
     }
 
     public function getTypeCB(): ?string

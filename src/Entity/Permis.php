@@ -22,9 +22,15 @@ class Permis
      */
     private $incluses;
 
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\Chauffeur", mappedBy="Permis", orphanRemoval=true)
+     */
+    private $chauffeurs;
+
     public function __construct()
     {
         $this->incluses = new ArrayCollection();
+        $this->chauffeurs = new ArrayCollection();
     }
 
     public function getPermis(): ?string
@@ -64,6 +70,37 @@ class Permis
             // set the owning side to null (unless already changed)
             if ($inclus->getPermisInclus() === $this) {
                 $inclus->setPermisInclus(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Chauffeur[]
+     */
+    public function getChauffeurs(): Collection
+    {
+        return $this->chauffeurs;
+    }
+
+    public function addChauffeur(Chauffeur $chauffeur): self
+    {
+        if (!$this->chauffeurs->contains($chauffeur)) {
+            $this->chauffeurs[] = $chauffeur;
+            $chauffeur->setPermis($this);
+        }
+
+        return $this;
+    }
+
+    public function removeChauffeur(Chauffeur $chauffeur): self
+    {
+        if ($this->chauffeurs->contains($chauffeur)) {
+            $this->chauffeurs->removeElement($chauffeur);
+            // set the owning side to null (unless already changed)
+            if ($chauffeur->getPermis() === $this) {
+                $chauffeur->setPermis(null);
             }
         }
 

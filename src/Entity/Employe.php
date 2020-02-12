@@ -12,9 +12,9 @@ class Employe
     /**
      * @ORM\Id()
      * @ORM\GeneratedValue()
-     * @ORM\Column(type="integer")
+     * @ORM\Column(type="integer", name="IdEmp")
      */
-    private $id;
+    private $idEmp;
 
     /**
      * @ORM\Column(type="string", length=10)
@@ -52,9 +52,14 @@ class Employe
      */
     private $NomRole;
 
+    /**
+     * @ORM\OneToOne(targetEntity="App\Entity\Chauffeur", mappedBy="IdEmp", cascade={"persist", "remove"})
+     */
+    private $chauffeur;
+
     public function getId(): ?int
     {
-        return $this->id;
+        return $this->idEmp;
     }
 
     public function getNomEmp(): ?string
@@ -137,6 +142,23 @@ class Employe
     public function setNomRole(?Roles $NomRole): self
     {
         $this->NomRole = $NomRole;
+
+        return $this;
+    }
+
+    public function getChauffeur(): ?Chauffeur
+    {
+        return $this->chauffeur;
+    }
+
+    public function setChauffeur(Chauffeur $chauffeur): self
+    {
+        $this->chauffeur = $chauffeur;
+
+        // set the owning side of the relation if necessary
+        if ($chauffeur->getIdEmp() !== $this) {
+            $chauffeur->setIdEmp($this);
+        }
 
         return $this;
     }
