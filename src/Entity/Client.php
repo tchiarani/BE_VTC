@@ -12,45 +12,62 @@ class Client
     /**
      * @ORM\Id()
      * @ORM\GeneratedValue()
-     * @ORM\Column(type="integer")
+     * @ORM\Column(type="integer", name="idclient")
      */
     private $id;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="string", length=255, name="nomClient")
      */
-    private $name;
+    private $nomClient;
+
+    /**
+     * @ORM\Column(type="string", length=255, name="prenomClient")
+     */
+    private $prenomClient;
 
     /**
      * @ORM\Column(type="string", length=255)
      */
-    private $phone;
+    private $portable;
 
     public function getId(): ?int
     {
         return $this->id;
     }
 
-    public function getName(): ?string
+    public function getNom(): ?string
     {
-        return $this->name;
+        return $this->nomClient;
     }
 
-    public function setName(string $name): self
+    public function setNom(string $nom): self
     {
-        $this->name = $name;
+        $this->nomClient = $nom;
 
         return $this;
     }
 
-    public function getPhone(): ?string
+    public function getPrenom(): ?string
     {
-        return $this->phone;
+        return $this->prenomClient;
     }
 
-    public function setPhone(string $phone): self
+    public function setPrenom(string $prenom): self
     {
-        $this->phone = $phone;
+        $this->prenomClient = $prenom;
+
+        return $this;
+    }
+
+    public function getPortable(): ?string
+    {
+        return $this->portable;
+    }
+
+    public function setPortable(string $portable): self
+    {
+        $this->portable = $portable;
 
         return $this;
     }
