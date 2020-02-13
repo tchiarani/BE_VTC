@@ -2,6 +2,8 @@
 
 namespace App\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -12,153 +14,171 @@ class Employe
     /**
      * @ORM\Id()
      * @ORM\GeneratedValue()
-     * @ORM\Column(type="integer", name="IdEmp")
+     * @ORM\Column(type="integer", name="IDEMP")
      */
-    private $idEmp;
+    private $id;
 
     /**
-     * @ORM\Column(type="string", length=10)
+     * @ORM\Column(type="string", length=30, name="NOMEMP")
      */
-    private $NomEmp;
+    private $nomEmp;
 
     /**
-     * @ORM\Column(type="string", length=30)
+     * @ORM\Column(type="string", length=30, name="PRENOMEMP")
      */
-    private $PrenomEmp;
+    private $prenomEmp;
 
     /**
-     * @ORM\Column(type="string", length=100)
+     * @ORM\Column(type="string", length=100, name="LOGINEMP")
      */
-    private $LoginEmp;
+    private $loginEmp;
 
     /**
-     * @ORM\Column(type="string", length=100)
+     * @ORM\Column(type="string", length=100, name="PASSWORDEMP")
      */
-    private $PasswordEmp;
+    private $passwordEmp;
 
     /**
-     * @ORM\Column(type="string", length=20)
+     * @ORM\Column(type="string", length=20, name="TELEMP")
      */
-    private $TelEmp;
+    private $telEmp;
 
     /**
-     * @ORM\Column(type="integer")
+     * @ORM\Column(type="integer", name="TEMPTRAVAILEMP")
      */
-    private $TempTravailEmp;
+    private $tempTravailEmp;
 
     /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\Roles", inversedBy="employes")
-     * @ORM\JoinColumn(nullable=false)
-     */
-    private $NomRole;
-
-    /**
-     * @ORM\OneToOne(targetEntity="App\Entity\Chauffeur", mappedBy="IdEmp", cascade={"persist", "remove"})
+     * @ORM\OneToMany(targetEntity="App\Entity\Chauffeur", mappedBy="employe")
      */
     private $chauffeur;
 
+    /**
+     * @ORM\Column(type="string", length=255, name="")
+     */
+    private $roles;
+
+    public function __construct()
+    {
+        $this->chauffeur = new ArrayCollection();
+    }
+
     public function getId(): ?int
     {
-        return $this->idEmp;
+        return $this->id;
     }
 
-    public function getNomEmp(): ?string
+    public function getNom(): ?string
     {
-        return $this->NomEmp;
+        return $this->nomEmp;
     }
 
-    public function setNomEmp(string $NomEmp): self
+    public function setNom(string $nomEmp): self
     {
-        $this->NomEmp = $NomEmp;
+        $this->nomEmp = $nomEmp;
 
         return $this;
     }
 
-    public function getPrenomEmp(): ?string
+    public function getPrenom(): ?string
     {
-        return $this->PrenomEmp;
+        return $this->prenomEmp;
     }
 
-    public function setPrenomEmp(string $PrenomEmp): self
+    public function setPrenom(string $prenomEmp): self
     {
-        $this->PrenomEmp = $PrenomEmp;
+        $this->prenomEmp = $prenomEmp;
 
         return $this;
     }
 
-    public function getLoginEmp(): ?string
+    public function getLogin(): ?string
     {
-        return $this->LoginEmp;
+        return $this->loginEmp;
     }
 
-    public function setLoginEmp(string $LoginEmp): self
+    public function setLogin(string $loginEmp): self
     {
-        $this->LoginEmp = $LoginEmp;
+        $this->loginEmp = $loginEmp;
 
         return $this;
     }
 
-    public function getPasswordEmp(): ?string
+    public function getPassword(): ?string
     {
-        return $this->PasswordEmp;
+        return $this->passwordEmp;
     }
 
-    public function setPasswordEmp(string $PasswordEmp): self
+    public function setPassword(string $passwordEmp): self
     {
-        $this->PasswordEmp = $PasswordEmp;
+        $this->passwordEmp = $passwordEmp;
 
         return $this;
     }
 
-    public function getTelEmp(): ?string
+    public function getTel(): ?string
     {
-        return $this->TelEmp;
+        return $this->telEmp;
     }
 
-    public function setTelEmp(string $TelEmp): self
+    public function setTel(string $telEmp): self
     {
-        $this->TelEmp = $TelEmp;
+        $this->telEmp = $telEmp;
 
         return $this;
     }
 
-    public function getTempTravailEmp(): ?int
+    public function getTempTravail(): ?int
     {
-        return $this->TempTravailEmp;
+        return $this->tempTravailEmp;
     }
 
-    public function setTempTravailEmp(int $TempTravailEmp): self
+    public function setTempTravail(int $tempTravailEmp): self
     {
-        $this->TempTravailEmp = $TempTravailEmp;
+        $this->tempTravailEmp = $tempTravailEmp;
 
         return $this;
     }
 
-    public function getNomRole(): ?Roles
-    {
-        return $this->NomRole;
-    }
-
-    public function setNomRole(?Roles $NomRole): self
-    {
-        $this->NomRole = $NomRole;
-
-        return $this;
-    }
-
-    public function getChauffeur(): ?Chauffeur
+    /**
+     * @return Collection|Chauffeur[]
+     */
+    public function getChauffeur(): Collection
     {
         return $this->chauffeur;
     }
 
-    public function setChauffeur(Chauffeur $chauffeur): self
+    public function addChauffeur(Chauffeur $chauffeur): self
     {
-        $this->chauffeur = $chauffeur;
-
-        // set the owning side of the relation if necessary
-        if ($chauffeur->getIdEmp() !== $this) {
-            $chauffeur->setIdEmp($this);
+        if (!$this->chauffeur->contains($chauffeur)) {
+            $this->chauffeur[] = $chauffeur;
+            $chauffeur->setEmploye($this);
         }
+
+        return $this;
+    }
+
+    public function removeChauffeur(Chauffeur $chauffeur): self
+    {
+        if ($this->chauffeur->contains($chauffeur)) {
+            $this->chauffeur->removeElement($chauffeur);
+            // set the owning side to null (unless already changed)
+            if ($chauffeur->getEmploye() === $this) {
+                $chauffeur->setEmploye(null);
+            }
+        }
+
+        return $this;
+    }
+
+    public function getRoles(): ?string
+    {
+        return $this->roles;
+    }
+
+    public function setRoles(string $roles): self
+    {
+        $this->roles = $roles;
 
         return $this;
     }

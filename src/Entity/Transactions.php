@@ -12,201 +12,204 @@ class Transactions
     /**
      * @ORM\Id()
      * @ORM\GeneratedValue()
-     * @ORM\Column(type="integer", name="IdTransaction")
+     * @ORM\Column(type="integer", name="IDTRANSACTION")
      */
-    private $IdTransaction;
+    private $id;
 
     /**
-     * @ORM\Column(type="integer")
+     * @ORM\Column(type="integer", name="NBKILOMETRES")
      */
-    private $NbKilometres;
+    private $nbKilometres;
 
     /**
-     * @ORM\Column(type="integer")
+     * @ORM\Column(type="integer", name="NBPASSAGER")
      */
-    private $NbPassager;
+    private $nbPassager;
 
     /**
-     * @ORM\Column(type="string", length=50)
+     * @ORM\Column(type="string", length=50, name="ADRESSEDEP")
      */
-    private $AdresseDep;
+    private $adresseDep;
 
     /**
-     * @ORM\Column(type="string", length=50)
+     * @ORM\Column(type="string", length=50, name="ADRESSEARR")
      */
-    private $AdresseArr;
+    private $adresseArr;
 
     /**
-     * @ORM\Column(type="date")
+     * @ORM\Column(type="date", name="HEUREDEP")
      */
-    private $HeureDep;
+    private $heureDep;
 
     /**
-     * @ORM\Column(type="date")
+     * @ORM\Column(type="date", name="HEUREARR")
      */
-    private $HeureArr;
+    private $heureArr;
 
     /**
-     * @ORM\Column(type="boolean")
+     * @ORM\Column(type="boolean", name="ETATTRANSAC")
      */
-    private $EtatTransac;
+    private $etatTransac;
 
     /**
-     * @ORM\Column(type="float")
+     * @ORM\Column(type="float", name="PRIX")
      */
-    private $Prix;
+    private $prix;
 
+    // , inversedBy="transactions"
     /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\Client", inversedBy="transactions")
+     * @ORM\ManyToOne(targetEntity="App\Entity\Client")
      * @ORM\JoinColumn(nullable=false)
      */
-    private $IdClient;
+    private $idClient;
 
+    // , inversedBy="transactions"
     /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\Vehicule", inversedBy="transactions")
+     * @ORM\ManyToOne(targetEntity="App\Entity\Vehicule")
      * @ORM\JoinColumn(nullable=false)
      */
-    private $Immat;
+    private $immat;
 
+    // , inversedBy="transactions"
     /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\Chauffeur", inversedBy="transactions")
+     * @ORM\ManyToOne(targetEntity="App\Entity\Chauffeur")
      * @ORM\JoinColumn(nullable=false)
      */
-    private $IdChauffeur;
+    private $idChauffeur;
 
     public function getId(): ?int
     {
-        return $this->IdTransaction;
+        return $this->id;
     }
 
     public function getNbKilometres(): ?int
     {
-        return $this->NbKilometres;
+        return $this->nbKilometres;
     }
 
-    public function setNbKilometres(int $NbKilometres): self
+    public function setNbKilometres(int $nbKilometres): self
     {
-        $this->NbKilometres = $NbKilometres;
+        $this->nbKilometres = $nbKilometres;
 
         return $this;
     }
 
     public function getNbPassager(): ?int
     {
-        return $this->NbPassager;
+        return $this->nbPassager;
     }
 
-    public function setNbPassager(int $NbPassager): self
+    public function setNbPassager(int $nbPassager): self
     {
-        $this->NbPassager = $NbPassager;
+        $this->nbPassager = $nbPassager;
 
         return $this;
     }
 
     public function getAdresseDep(): ?string
     {
-        return $this->AdresseDep;
+        return $this->adresseDep;
     }
 
-    public function setAdresseDep(string $AdresseDep): self
+    public function setAdresseDep(string $adresseDep): self
     {
-        $this->AdresseDep = $AdresseDep;
+        $this->adresseDep = $adresseDep;
 
         return $this;
     }
 
     public function getAdresseArr(): ?string
     {
-        return $this->AdresseArr;
+        return $this->adresseArr;
     }
 
-    public function setAdresseArr(string $AdresseArr): self
+    public function setAdresseArr(string $adresseArr): self
     {
-        $this->AdresseArr = $AdresseArr;
+        $this->adresseArr = $adresseArr;
 
         return $this;
     }
 
     public function getHeureDep(): ?\DateTimeInterface
     {
-        return $this->HeureDep;
+        return $this->heureDep;
     }
 
-    public function setHeureDep(\DateTimeInterface $HeureDep): self
+    public function setHeureDep(\DateTimeInterface $heureDep): self
     {
-        $this->HeureDep = $HeureDep;
+        $this->heureDep = $heureDep;
 
         return $this;
     }
 
     public function getHeureArr(): ?\DateTimeInterface
     {
-        return $this->HeureArr;
+        return $this->heureArr;
     }
 
-    public function setHeureArr(\DateTimeInterface $HeureArr): self
+    public function setHeureArr(\DateTimeInterface $heureArr): self
     {
-        $this->HeureArr = $HeureArr;
+        $this->heureArr = $heureArr;
 
         return $this;
     }
 
-    public function getEtatTransac(): ?bool
+    public function getEtat(): ?bool
     {
-        return $this->EtatTransac;
+        return $this->etatTransac;
     }
 
-    public function setEtatTransac(bool $EtatTransac): self
+    public function setEtat(bool $etatTransac): self
     {
-        $this->EtatTransac = $EtatTransac;
+        $this->etatTransac = $etatTransac;
 
         return $this;
     }
 
     public function getPrix(): ?float
     {
-        return $this->Prix;
+        return $this->prix;
     }
 
-    public function setPrix(float $Prix): self
+    public function setPrix(float $prix): self
     {
-        $this->Prix = $Prix;
+        $this->prix = $prix;
 
         return $this;
     }
 
-    public function getIdClient(): ?Client
+    public function getClient(): ?Client
     {
-        return $this->IdClient;
+        return $this->idClient;
     }
 
-    public function setIdClient(?Client $IdClient): self
+    public function setClient(?Client $client): self
     {
-        $this->IdClient = $IdClient;
+        $this->idClient = $client;
 
         return $this;
     }
 
-    public function getImmat(): ?Vehicule
+    public function getVehicule(): ?Vehicule
     {
-        return $this->Immat;
+        return $this->immat;
     }
 
-    public function setImmat(?Vehicule $Immat): self
+    public function setVehicule(?Vehicule $vehicule): self
     {
-        $this->Immat = $Immat;
+        $this->immat = $vehicule;
 
         return $this;
     }
 
-    public function getIdChauffeur(): ?Chauffeur
+    public function getChauffeur(): ?Chauffeur
     {
-        return $this->IdChauffeur;
+        return $this->idChauffeur;
     }
 
-    public function setIdChauffeur(?Chauffeur $IdChauffeur): self
+    public function setChauffeur(?Chauffeur $chauffeur): self
     {
-        $this->IdChauffeur = $IdChauffeur;
+        $this->idChauffeur = $chauffeur;
 
         return $this;
     }

@@ -14,44 +14,44 @@ class Client
     /**
      * @ORM\Id()
      * @ORM\GeneratedValue()
-     * @ORM\Column(type="integer", name="idclient")
+     * @ORM\Column(type="integer", name="IDCLIENT")
      */
-    private $idClient;
+    private $id;
 
     /**
-     * @ORM\Column(type="string", length=255, name="nomClient")
+     * @ORM\Column(type="string", length=255, name="nomClient", name="NOMCLIENT")
      */
     private $nomClient;
 
     /**
-     * @ORM\Column(type="string", length=255, name="prenomClient")
+     * @ORM\Column(type="string", length=255, name="prenomClient", name="PRENOMCLIENT")
      */
     private $prenomClient;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="string", length=255, name="PORTABLE")
      */
     private $portable;
-
+/*
     /**
      * @ORM\OneToMany(targetEntity="App\Entity\Paiement", mappedBy="IdClient", orphanRemoval=true)
-     */
-    private $paiements;
+     *//*
+    private $paiements;*/
 
-    /**
+    /*/**
      * @ORM\OneToMany(targetEntity="App\Entity\Transactions", mappedBy="IdClient", orphanRemoval=true)
-     */
+     *//*
     private $transactions;
 
     public function __construct()
     {
-        $this->paiements = new ArrayCollection();
+        //$this->paiements = new ArrayCollection();
         $this->transactions = new ArrayCollection();
-    }
+    }*/
 
     public function getId(): ?int
     {
-        return $this->idClient;
+        return $this->id;
     }
 
     public function getNOMCLIENT(): ?string
@@ -90,9 +90,9 @@ class Client
         return $this;
     }
 
-    /**
+    /*/**
      * @return Collection|Paiement[]
-     */
+     *//*
     public function getPaiements(): Collection
     {
         return $this->paiements;
@@ -123,7 +123,7 @@ class Client
 
     /**
      * @return Collection|Transactions[]
-     */
+     *//*
     public function getTransactions(): Collection
     {
         return $this->transactions;
@@ -150,5 +150,5 @@ class Client
         }
 
         return $this;
-    }
+    }*/
 }

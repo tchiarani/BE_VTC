@@ -14,81 +14,72 @@ class Chauffeur
     /**
      * @ORM\Id()
      * @ORM\GeneratedValue()
-     * @ORM\Column(type="integer")
+     * @ORM\Column(type="integer", name="IDCHAUFFEUR")
      */
-    private $idChauffeur;
+    private $id;
 
     /**
-     * @ORM\Column(type="boolean")
+     * @ORM\Column(type="boolean", name="CHAUFFEURACTIF")
      */
-    private $ChauffeurActif;
+    private $chauffeurActif;
 
+    // , inversedBy="chauffeurs"
     /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\Permis", inversedBy="chauffeurs")
+     * @ORM\ManyToOne(targetEntity="App\Entity\Permis")
      * @ORM\JoinColumn(nullable=false)
      */
-    private $Permis;
+    private $permis;
 
-    /**
-     * @ORM\OneToOne(targetEntity="App\Entity\Employe", inversedBy="chauffeur", cascade={"persist", "remove"})
-     * @ORM\JoinColumn(nullable=false)
-     */
-    private $IdEmp;
-
-    /**
+    /*/**
      * @ORM\OneToMany(targetEntity="App\Entity\Transactions", mappedBy="IdChauffeur", orphanRemoval=true)
-     */
-    private $transactions;
+     *//*
+    private $transactions;*/
 
-    public function __construct()
+    // , inversedBy="chauffeur"
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\Employe")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $employe;
+
+    /*public function __construct()
     {
         $this->transactions = new ArrayCollection();
-    }
+    }*/
 
     public function getId(): ?int
     {
-        return $this->idChauffeur;
+        return $this->id;
     }
 
-    public function getChauffeurActif(): ?bool
+    public function isChauffeurActif(): ?bool
     {
-        return $this->ChauffeurActif;
+        return $this->chauffeurActif;
     }
 
-    public function setChauffeurActif(bool $ChauffeurActif): self
+    public function setChauffeurActif(bool $chauffeurActif): self
     {
-        $this->ChauffeurActif = $ChauffeurActif;
+        $this->chauffeurActif = $chauffeurActif;
 
         return $this;
     }
 
     public function getPermis(): ?Permis
     {
-        return $this->Permis;
+        return $this->permis;
     }
 
-    public function setPermis(?Permis $Permis): self
+    public function setPermis(?Permis $permis): self
     {
-        $this->Permis = $Permis;
+        $this->Permis = $permis;
 
         return $this;
     }
 
-    public function getIdEmp(): ?Employe
-    {
-        return $this->IdEmp;
-    }
-
-    public function setIdEmp(Employe $IdEmp): self
-    {
-        $this->IdEmp = $IdEmp;
-
-        return $this;
-    }
-
+    /*
     /**
      * @return Collection|Transactions[]
-     */
+     *//*
     public function getTransactions(): Collection
     {
         return $this->transactions;
@@ -113,6 +104,18 @@ class Chauffeur
                 $transaction->setIdChauffeur(null);
             }
         }
+
+        return $this;
+    }*/
+
+    public function getEmploye(): ?Employe
+    {
+        return $this->employe;
+    }
+
+    public function setEmploye(?Employe $employe): self
+    {
+        $this->employe = $employe;
 
         return $this;
     }

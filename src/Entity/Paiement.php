@@ -11,64 +11,64 @@ class Paiement
 {
     /**
      * @ORM\Id()
-     * @ORM\GeneratedValue()
-     * @ORM\Column(type="integer", name="IdCB")
+     * @ORM\Column(type="integer", name="IDCB")
      */
-    private $idCB;
+    private $id;
 
     /**
-     * @ORM\Column(type="string", length=10)
+     * @ORM\Column(type="string", length=10, name="TYPECB")
      */
-    private $TypeCB;
+    private $typeCB;
 
     /**
-     * @ORM\Column(type="date")
+     * @ORM\Column(type="date", name="DATECB")
      */
-    private $DateCB;
+    private $dateCB;
 
+    /* MTO : , inversedBy="paiements" */
     /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\Client", inversedBy="paiements")
+     * @ORM\ManyToOne(targetEntity="App\Entity\Client")
      * @ORM\JoinColumn(nullable=false)
      */
-    private $IdClient;
+    private $idClient;
 
     public function getId(): ?int
     {
-        return $this->idCB;
+        return $this->id;
     }
 
     public function getTypeCB(): ?string
     {
-        return $this->TypeCB;
+        return $this->typeCB;
     }
 
-    public function setTypeCB(string $TypeCB): self
+    public function setTypeCB(string $typeCB): self
     {
-        $this->TypeCB = $TypeCB;
+        $this->typeCB = $typeCB;
 
         return $this;
     }
 
     public function getDateCB(): ?\DateTimeInterface
     {
-        return $this->DateCB;
+        return $this->dateCB;
     }
 
-    public function setDateCB(\DateTimeInterface $DateCB): self
+    public function setDateCB(\DateTimeInterface $dateCB): self
     {
-        $this->DateCB = $DateCB;
+        $this->dateCB = $dateCB;
 
         return $this;
     }
 
     public function getIdClient(): ?Client
     {
-        return $this->IdClient;
+        return $this->idClient;
     }
 
-    public function setIdClient(?Client $IdClient): self
+    public function setIdClient(?Client $idClient): self
     {
-        $this->IdClient = $IdClient;
+        $this->idClient = $idClient;
 
         return $this;
     }
