@@ -21,13 +21,13 @@ class Chauffeur
     /**
      * @ORM\Column(type="boolean")
      */
-    private $ChauffeurActif;
+    private $chauffeurActif;
 
     /**
      * @ORM\ManyToOne(targetEntity="App\Entity\Permis", inversedBy="chauffeurs")
      * @ORM\JoinColumn(nullable=false)
      */
-    private $Permis;
+    private $permis;
 
     /*/**
      * @ORM\OneToMany(targetEntity="App\Entity\Transactions", mappedBy="IdChauffeur", orphanRemoval=true)
@@ -40,36 +40,36 @@ class Chauffeur
      */
     private $employe;
 
-    public function __construct()
+    /*public function __construct()
     {
         $this->transactions = new ArrayCollection();
-    }
+    }*/
 
     public function getId(): ?int
     {
         return $this->id;
     }
 
-    public function getChauffeurActif(): ?bool
+    public function isChauffeurActif(): ?bool
     {
-        return $this->ChauffeurActif;
+        return $this->chauffeurActif;
     }
 
-    public function setChauffeurActif(bool $ChauffeurActif): self
+    public function setchauffeurActif(bool $chauffeurActif): self
     {
-        $this->ChauffeurActif = $ChauffeurActif;
+        $this->chauffeurActif = $chauffeurActif;
 
         return $this;
     }
 
     public function getPermis(): ?Permis
     {
-        return $this->Permis;
+        return $this->permis;
     }
 
-    public function setPermis(?Permis $Permis): self
+    public function setPermis(?Permis $permis): self
     {
-        $this->Permis = $Permis;
+        $this->Permis = $permis;
 
         return $this;
     }
