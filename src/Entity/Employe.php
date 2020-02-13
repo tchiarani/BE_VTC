@@ -2,6 +2,8 @@
 
 namespace App\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -47,15 +49,19 @@ class Employe
     private $TempTravailEmp;
 
     /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\Roles", inversedBy="employes")
-     * @ORM\JoinColumn(nullable=false)
-     */
-    private $NomRole;
-
-    /**
-     * @ORM\OneToOne(targetEntity="App\Entity\Chauffeur", mappedBy="IdEmp", cascade={"persist", "remove"})
+     * @ORM\OneToMany(targetEntity="App\Entity\Chauffeur", mappedBy="employe")
      */
     private $chauffeur;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $Roles;
+
+    public function __construct()
+    {
+        $this->chauffeur = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -134,31 +140,45 @@ class Employe
         return $this;
     }
 
-    public function getNomRole(): ?Roles
-    {
-        return $this->NomRole;
-    }
-
-    public function setNomRole(?Roles $NomRole): self
-    {
-        $this->NomRole = $NomRole;
-
-        return $this;
-    }
-
-    public function getChauffeur(): ?Chauffeur
+    /**
+     * @return Collection|Chauffeur[]
+     */
+    public function getChauffeur(): Collection
     {
         return $this->chauffeur;
     }
 
-    public function setChauffeur(Chauffeur $chauffeur): self
+    public function addChauffeur(Chauffeur $chauffeur): self
     {
-        $this->chauffeur = $chauffeur;
-
-        // set the owning side of the relation if necessary
-        if ($chauffeur->getIdEmp() !== $this) {
-            $chauffeur->setIdEmp($this);
+        if (!$this->chauffeur->contains($chauffeur)) {
+            $this->chauffeur[] = $chauffeur;
+            $chauffeur->setEmploye($this);
         }
+
+        return $this;
+    }
+
+    public function removeChauffeur(Chauffeur $chauffeur): self
+    {
+        if ($this->chauffeur->contains($chauffeur)) {
+            $this->chauffeur->removeElement($chauffeur);
+            // set the owning side to null (unless already changed)
+            if ($chauffeur->getEmploye() === $this) {
+                $chauffeur->setEmploye(null);
+            }
+        }
+
+        return $this;
+    }
+
+    public function getRoles(): ?string
+    {
+        return $this->Roles;
+    }
+
+    public function setRoles(string $Roles): self
+    {
+        $this->Roles = $Roles;
 
         return $this;
     }

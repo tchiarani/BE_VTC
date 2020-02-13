@@ -11,7 +11,6 @@ class Paiement
 {
     /**
      * @ORM\Id()
-     * @ORM\GeneratedValue()
      * @ORM\Column(type="integer")
      */
     private $id;
@@ -26,8 +25,9 @@ class Paiement
      */
     private $DateCB;
 
+    /* MTO : , inversedBy="paiements" */
     /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\Client", inversedBy="paiements")
+     * @ORM\ManyToOne(targetEntity="App\Entity\Client")
      * @ORM\JoinColumn(nullable=false)
      */
     private $IdClient;

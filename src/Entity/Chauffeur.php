@@ -29,16 +29,16 @@ class Chauffeur
      */
     private $Permis;
 
-    /**
-     * @ORM\OneToOne(targetEntity="App\Entity\Employe", inversedBy="chauffeur", cascade={"persist", "remove"})
-     * @ORM\JoinColumn(nullable=false)
-     */
-    private $IdEmp;
+    /*/**
+     * @ORM\OneToMany(targetEntity="App\Entity\Transactions", mappedBy="IdChauffeur", orphanRemoval=true)
+     *//*
+    private $transactions;*/
 
     /**
-     * @ORM\OneToMany(targetEntity="App\Entity\Transactions", mappedBy="IdChauffeur", orphanRemoval=true)
+     * @ORM\ManyToOne(targetEntity="App\Entity\Employe", inversedBy="chauffeur")
+     * @ORM\JoinColumn(nullable=false)
      */
-    private $transactions;
+    private $employe;
 
     public function __construct()
     {
@@ -74,21 +74,10 @@ class Chauffeur
         return $this;
     }
 
-    public function getIdEmp(): ?Employe
-    {
-        return $this->IdEmp;
-    }
-
-    public function setIdEmp(Employe $IdEmp): self
-    {
-        $this->IdEmp = $IdEmp;
-
-        return $this;
-    }
-
+    /*
     /**
      * @return Collection|Transactions[]
-     */
+     *//*
     public function getTransactions(): Collection
     {
         return $this->transactions;
@@ -113,6 +102,18 @@ class Chauffeur
                 $transaction->setIdChauffeur(null);
             }
         }
+
+        return $this;
+    }*/
+
+    public function getEmploye(): ?Employe
+    {
+        return $this->employe;
+    }
+
+    public function setEmploye(?Employe $employe): self
+    {
+        $this->employe = $employe;
 
         return $this;
     }

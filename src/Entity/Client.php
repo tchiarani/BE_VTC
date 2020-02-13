@@ -32,11 +32,11 @@ class Client
      * @ORM\Column(type="string", length=255)
      */
     private $portable;
-
+/*
     /**
      * @ORM\OneToMany(targetEntity="App\Entity\Paiement", mappedBy="IdClient", orphanRemoval=true)
-     */
-    private $paiements;
+     *//*
+    private $paiements;*/
 
     /**
      * @ORM\OneToMany(targetEntity="App\Entity\Transactions", mappedBy="IdClient", orphanRemoval=true)
@@ -45,7 +45,7 @@ class Client
 
     public function __construct()
     {
-        $this->paiements = new ArrayCollection();
+        //$this->paiements = new ArrayCollection();
         $this->transactions = new ArrayCollection();
     }
 
@@ -90,9 +90,9 @@ class Client
         return $this;
     }
 
-    /**
+    /*/**
      * @return Collection|Paiement[]
-     */
+     *//*
     public function getPaiements(): Collection
     {
         return $this->paiements;
@@ -119,7 +119,7 @@ class Client
         }
 
         return $this;
-    }
+    }*/
 
     /**
      * @return Collection|Transactions[]
