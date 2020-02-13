@@ -5,11 +5,12 @@ namespace App\Entity;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Security\Core\User\UserInterface;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\EmployeRepository")
  */
-class Employe
+class Employe implements UserInterface
 {
     /**
      * @ORM\Id()
@@ -54,9 +55,9 @@ class Employe
     private $chauffeur;
 
     /**
-     * @ORM\Column(type="string", length=255, name="ROLES")
+     * @ORM\Column(type="json", name="ROLES")
      */
-    private $roles;
+    private $roles = [];
 
     public function __construct()
     {
@@ -171,15 +172,50 @@ class Employe
         return $this;
     }
 
-    public function getRoles(): ?string
+    /**
+     * @see UserInterface
+     */
+    public function getRoles(): array
     {
-        return $this->roles;
+        $roles = $this->roles;
+        // guarantee every user at least has ROLE_USER
+        $roles[] = 'ROLE_USER';
+
+        return array_unique($roles);
     }
 
-    public function setRoles(string $roles): self
+    /**
+     * @see UserInterface
+     */
+    public function setRoles(array $roles): self
     {
         $this->roles = $roles;
 
         return $this;
+    }
+
+    /**
+     * @see UserInterface
+     */
+    public function getSalt()
+    {
+        // not needed when using the "bcrypt" algorithm in security.yaml
+    }
+
+    /**
+     * @see UserInterface
+     */
+    public function eraseCredentials()
+    {
+        // If you store any temporary, sensitive data on the user, clear it here
+        // $this->plainPassword = null;
+    }
+
+    /**
+     * @see UserInterface
+     */
+    public function getUsername()
+    {
+        return $this->loginEmp;
     }
 }

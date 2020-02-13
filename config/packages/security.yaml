@@ -1,13 +1,30 @@
 security:
+    encoders:
+        App\Entity\Employe:
+            algorithm: auto
+
     # https://symfony.com/doc/current/security.html#where-do-users-come-from-user-providers
     providers:
-        in_memory: { memory: null }
+        # used to reload user from session & other features (e.g. switch_user)
+        app_user_provider:
+            entity:
+                class: App\Entity\Employe
+                property: loginEmp
+
     firewalls:
         dev:
             pattern: ^/(_(profiler|wdt)|css|images|js)/
             security: false
         main:
-            anonymous: lazy
+            pattern: ^/
+            form_login:
+                check_path: utilisateur-login-check
+                login_path: utilisateur-login
+            logout:
+                path: utilisateur-logout
+                target: home-index
+                invalidate_session: false
+            anonymous: ~
 
             # activate different ways to authenticate
             # https://symfony.com/doc/current/security.html#firewalls-authentication
@@ -18,5 +35,13 @@ security:
     # Easy way to control access for large sections of your site
     # Note: Only the *first* access control that matches will be used
     access_control:
-        # - { path: ^/admin, roles: ROLE_ADMIN }
-        # - { path: ^/profile, roles: ROLE_USER }
+    # - { path: ^/admin, roles: ROLE_ADMIN }
+    # - { path: ^/profile, roles: ROLE_USER }
+
+    role_hierarchy:
+        ROLE_ADMIN: ROLE_USER
+        ROLE_HOTLINER: ROLE_USER
+        ROLE_CHAUFFEUR: ROLE_USER
+        ROLE_GARAGE: ROLE_USER
+        ROLE_COMPTABILITE: ROLE_USER
+        ROLE_RH: ROLE_USER

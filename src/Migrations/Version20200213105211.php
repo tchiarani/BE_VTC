@@ -10,7 +10,7 @@ use Doctrine\Migrations\AbstractMigration;
 /**
  * Auto-generated Migration: Please modify to your needs!
  */
-final class Version20200213102530 extends AbstractMigration
+final class Version20200213105211 extends AbstractMigration
 {
     public function getDescription() : string
     {
@@ -32,7 +32,8 @@ final class Version20200213102530 extends AbstractMigration
         $this->addSql('CREATE INDEX IDX_5CA777B83594A24E ON chauffeur (permis_id)');
         $this->addSql('CREATE INDEX IDX_5CA777B81B65292 ON chauffeur (employe_id)');
         $this->addSql('CREATE TABLE client (IDCLIENT NUMBER(10) NOT NULL, NOMCLIENT VARCHAR2(255) NOT NULL, PRENOMCLIENT VARCHAR2(255) NOT NULL, PORTABLE VARCHAR2(255) NOT NULL, PRIMARY KEY(IDCLIENT))');
-        $this->addSql('CREATE TABLE employe (IDEMP NUMBER(10) NOT NULL, NOMEMP VARCHAR2(30) NOT NULL, PRENOMEMP VARCHAR2(30) NOT NULL, LOGINEMP VARCHAR2(100) NOT NULL, PASSWORDEMP VARCHAR2(100) NOT NULL, TELEMP VARCHAR2(20) NOT NULL, TEMPTRAVAILEMP NUMBER(10) NOT NULL, ROLES VARCHAR2(255) NOT NULL, PRIMARY KEY(IDEMP))');
+        $this->addSql('CREATE TABLE employe (IDEMP NUMBER(10) NOT NULL, NOMEMP VARCHAR2(30) NOT NULL, PRENOMEMP VARCHAR2(30) NOT NULL, LOGINEMP VARCHAR2(100) NOT NULL, PASSWORDEMP VARCHAR2(100) NOT NULL, TELEMP VARCHAR2(20) NOT NULL, TEMPTRAVAILEMP NUMBER(10) NOT NULL, ROLES CLOB NOT NULL, PRIMARY KEY(IDEMP))');
+        $this->addSql('COMMENT ON COLUMN employe.ROLES IS \'(DC2Type:json)\'');
         $this->addSql('CREATE TABLE inclus (permis_id VARCHAR2(10) NOT NULL, permis_inclus_id VARCHAR2(10) NOT NULL, PRIMARY KEY(permis_id, permis_inclus_id))');
         $this->addSql('CREATE INDEX IDX_4B21F1813594A24E ON inclus (permis_id)');
         $this->addSql('CREATE INDEX IDX_4B21F181BBEF1182 ON inclus (permis_inclus_id)');
