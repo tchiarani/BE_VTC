@@ -38,16 +38,16 @@ class Client
      *//*
     private $paiements;*/
 
-    /**
+    /*/**
      * @ORM\OneToMany(targetEntity="App\Entity\Transactions", mappedBy="IdClient", orphanRemoval=true)
-     */
+     *//*
     private $transactions;
 
     public function __construct()
     {
         //$this->paiements = new ArrayCollection();
         $this->transactions = new ArrayCollection();
-    }
+    }*/
 
     public function getId(): ?int
     {
@@ -119,11 +119,11 @@ class Client
         }
 
         return $this;
-    }*/
+    }
 
     /**
      * @return Collection|Transactions[]
-     */
+     *//*
     public function getTransactions(): Collection
     {
         return $this->transactions;
@@ -150,5 +150,5 @@ class Client
         }
 
         return $this;
-    }
+    }*/
 }
