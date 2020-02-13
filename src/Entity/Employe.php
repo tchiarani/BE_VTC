@@ -21,32 +21,32 @@ class Employe
     /**
      * @ORM\Column(type="string", length=10)
      */
-    private $NomEmp;
+    private $nomEmp;
 
     /**
      * @ORM\Column(type="string", length=30)
      */
-    private $PrenomEmp;
+    private $prenomEmp;
 
     /**
      * @ORM\Column(type="string", length=100)
      */
-    private $LoginEmp;
+    private $loginEmp;
 
     /**
      * @ORM\Column(type="string", length=100)
      */
-    private $PasswordEmp;
+    private $passwordEmp;
 
     /**
      * @ORM\Column(type="string", length=20)
      */
-    private $TelEmp;
+    private $telEmp;
 
     /**
      * @ORM\Column(type="integer")
      */
-    private $TempTravailEmp;
+    private $tempTravailEmp;
 
     /**
      * @ORM\OneToMany(targetEntity="App\Entity\Chauffeur", mappedBy="employe")
@@ -56,7 +56,7 @@ class Employe
     /**
      * @ORM\Column(type="string", length=255)
      */
-    private $Roles;
+    private $roles;
 
     public function __construct()
     {
@@ -68,74 +68,74 @@ class Employe
         return $this->id;
     }
 
-    public function getNomEmp(): ?string
+    public function getNom(): ?string
     {
-        return $this->NomEmp;
+        return $this->nomEmp;
     }
 
-    public function setNomEmp(string $NomEmp): self
+    public function setNom(string $nomEmp): self
     {
-        $this->NomEmp = $NomEmp;
+        $this->nomEmp = $nomEmp;
 
         return $this;
     }
 
-    public function getPrenomEmp(): ?string
+    public function getPrenom(): ?string
     {
-        return $this->PrenomEmp;
+        return $this->prenomEmp;
     }
 
-    public function setPrenomEmp(string $PrenomEmp): self
+    public function setPrenom(string $prenomEmp): self
     {
-        $this->PrenomEmp = $PrenomEmp;
+        $this->prenomEmp = $prenomEmp;
 
         return $this;
     }
 
-    public function getLoginEmp(): ?string
+    public function getLogin(): ?string
     {
-        return $this->LoginEmp;
+        return $this->loginEmp;
     }
 
-    public function setLoginEmp(string $LoginEmp): self
+    public function setLogin(string $loginEmp): self
     {
-        $this->LoginEmp = $LoginEmp;
+        $this->loginEmp = $loginEmp;
 
         return $this;
     }
 
-    public function getPasswordEmp(): ?string
+    public function getPassword(): ?string
     {
-        return $this->PasswordEmp;
+        return $this->passwordEmp;
     }
 
-    public function setPasswordEmp(string $PasswordEmp): self
+    public function setPassword(string $passwordEmp): self
     {
-        $this->PasswordEmp = $PasswordEmp;
+        $this->passwordEmp = $passwordEmp;
 
         return $this;
     }
 
-    public function getTelEmp(): ?string
+    public function getTel(): ?string
     {
-        return $this->TelEmp;
+        return $this->telEmp;
     }
 
-    public function setTelEmp(string $TelEmp): self
+    public function setTel(string $telEmp): self
     {
-        $this->TelEmp = $TelEmp;
+        $this->telEmp = $telEmp;
 
         return $this;
     }
 
-    public function getTempTravailEmp(): ?int
+    public function getTempTravail(): ?int
     {
-        return $this->TempTravailEmp;
+        return $this->tempTravailEmp;
     }
 
-    public function setTempTravailEmp(int $TempTravailEmp): self
+    public function setTempTravail(int $tempTravailEmp): self
     {
-        $this->TempTravailEmp = $TempTravailEmp;
+        $this->tempTravailEmp = $tempTravailEmp;
 
         return $this;
     }
@@ -173,12 +173,12 @@ class Employe
 
     public function getRoles(): ?string
     {
-        return $this->Roles;
+        return $this->roles;
     }
 
-    public function setRoles(string $Roles): self
+    public function setRoles(string $roles): self
     {
-        $this->Roles = $Roles;
+        $this->roles = $roles;
 
         return $this;
     }
