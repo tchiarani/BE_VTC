@@ -14,34 +14,34 @@ class Inclus
      * @ORM\ManyToOne(targetEntity="App\Entity\Permis", inversedBy="incluses")
      * @ORM\JoinColumn(nullable=false)
      */
-    private $Permis;
+    private $permis;
 
     /**
      * @ORM\Id()
      * @ORM\ManyToOne(targetEntity="App\Entity\Permis", inversedBy="incluses")
      * @ORM\JoinColumn(nullable=false)
      */
-    private $PermisInclus;
+    private $permisInclus;
 
     public function getPermis(): ?Permis
     {
-        return $this->Permis;
+        return $this->permis;
     }
 
-    public function setPermis(?Permis $Permis): self
+    public function setPermis(?Permis $permis): self
     {
-        $this->Permis = $Permis;
+        $this->Permis = $permis;
 
         return $this;
     }
     public function getPermisInclus(): ?Permis
     {
-        return $this->PermisInclus;
+        return $this->permisInclus;
     }
 
-    public function setPermisInclus(?Permis $PermisInclus): self
+    public function setPermisInclus(?Permis $permisInclus): self
     {
-        $this->PermisInclus = $PermisInclus;
+        $this->permisInclus = $permisInclus;
 
         return $this;
     }
