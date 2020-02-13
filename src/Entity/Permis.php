@@ -17,27 +17,30 @@ class Permis
      */
     private $id;
 
-    /**
-     * @ORM\OneToMany(targetEntity="App\Entity\Inclus", mappedBy="PermisInclus", orphanRemoval=true)
-     */
+    /*/**
+     * @ORM\OneToMany(targetEntity="App\Entity\Inclus", mappedBy="permisInclus", orphanRemoval=true)
+     *//*
     private $incluses;
 
     /**
-     * @ORM\OneToMany(targetEntity="App\Entity\Chauffeur", mappedBy="Permis", orphanRemoval=true)
-     */
-    private $chauffeurs;
+     * @ORM\OneToMany(targetEntity="App\Entity\Chauffeur", mappedBy="permis", orphanRemoval=true)
+     *//*
+    private $chauffeurs;*/
 
-    /**
-     * @ORM\OneToMany(targetEntity="App\Entity\Vehicule", mappedBy="PermisNecessaire", orphanRemoval=true)
+    /*/**
+     * @ORM\OneToMany(targetEntity="App\Entity\Vehicule", mappedBy="permisNecessaire", orphanRemoval=true)
      */
+    /*/**
+     * @ORM\OneToMany(targetEntity="App\Entity\Vehicule", mappedBy="permisNecessaire")
+     *//*
     private $vehicules;
 
     public function __construct()
     {
         $this->incluses = new ArrayCollection();
-        $this->chauffeurs = new ArrayCollection();
+        //$this->chauffeurs = new ArrayCollection();
         $this->vehicules = new ArrayCollection();
-    }
+    }*/
 
     public function getId(): ?string
     {
@@ -51,14 +54,14 @@ class Permis
 
     public function setPermis(string $permis): self
     {
-        $this->Permis = $permis;
+        $this->id = $permis;
 
         return $this;
     }
 
-    /**
+    /*/**
      * @return Collection|Inclus[]
-     */
+     *//*
     public function getIncluses(): Collection
     {
         return $this->incluses;
@@ -89,7 +92,7 @@ class Permis
 
     /**
      * @return Collection|Chauffeur[]
-     */
+     *//*
     public function getChauffeurs(): Collection
     {
         return $this->chauffeurs;
@@ -120,7 +123,7 @@ class Permis
 
     /**
      * @return Collection|Vehicule[]
-     */
+     *//*
     public function getVehicules(): Collection
     {
         return $this->vehicules;
@@ -147,5 +150,5 @@ class Permis
         }
 
         return $this;
-    }
+    }*/
 }
