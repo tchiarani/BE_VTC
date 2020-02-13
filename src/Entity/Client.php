@@ -14,22 +14,22 @@ class Client
     /**
      * @ORM\Id()
      * @ORM\GeneratedValue()
-     * @ORM\Column(type="integer")
+     * @ORM\Column(type="integer", name="IDCLIENT")
      */
     private $id;
 
     /**
-     * @ORM\Column(type="string", length=255, name="nomClient")
+     * @ORM\Column(type="string", length=255, name="nomClient", name="NOMCLIENT")
      */
     private $nomClient;
 
     /**
-     * @ORM\Column(type="string", length=255, name="prenomClient")
+     * @ORM\Column(type="string", length=255, name="prenomClient", name="PRENOMCLIENT")
      */
     private $prenomClient;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="string", length=255, name="PORTABLE")
      */
     private $portable;
 /*

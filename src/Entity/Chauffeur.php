@@ -14,17 +14,18 @@ class Chauffeur
     /**
      * @ORM\Id()
      * @ORM\GeneratedValue()
-     * @ORM\Column(type="integer")
+     * @ORM\Column(type="integer", name="IDCHAUFFEUR")
      */
     private $id;
 
     /**
-     * @ORM\Column(type="boolean")
+     * @ORM\Column(type="boolean", name="CHAUFFEURACTIF")
      */
     private $chauffeurActif;
 
+    // , inversedBy="chauffeurs"
     /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\Permis", inversedBy="chauffeurs")
+     * @ORM\ManyToOne(targetEntity="App\Entity\Permis")
      * @ORM\JoinColumn(nullable=false)
      */
     private $permis;
@@ -34,8 +35,9 @@ class Chauffeur
      *//*
     private $transactions;*/
 
+    // , inversedBy="chauffeur"
     /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\Employe", inversedBy="chauffeur")
+     * @ORM\ManyToOne(targetEntity="App\Entity\Employe")
      * @ORM\JoinColumn(nullable=false)
      */
     private $employe;

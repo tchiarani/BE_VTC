@@ -9,16 +9,18 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class Inclus
 {
+    // , inversedBy="incluses"
     /**
      * @ORM\Id()
-     * @ORM\ManyToOne(targetEntity="App\Entity\Permis", inversedBy="incluses")
+     * @ORM\ManyToOne(targetEntity="App\Entity\Permis")
      * @ORM\JoinColumn(nullable=false)
      */
     private $permis;
 
+    // , inversedBy="incluses"
     /**
      * @ORM\Id()
-     * @ORM\ManyToOne(targetEntity="App\Entity\Permis", inversedBy="incluses")
+     * @ORM\ManyToOne(targetEntity="App\Entity\Permis")
      * @ORM\JoinColumn(nullable=false)
      */
     private $permisInclus;

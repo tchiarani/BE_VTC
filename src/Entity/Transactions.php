@@ -12,64 +12,67 @@ class Transactions
     /**
      * @ORM\Id()
      * @ORM\GeneratedValue()
-     * @ORM\Column(type="integer")
+     * @ORM\Column(type="integer", name="IDTRANSACTION")
      */
     private $id;
 
     /**
-     * @ORM\Column(type="integer")
+     * @ORM\Column(type="integer", name="NBKILOMETRES")
      */
     private $nbKilometres;
 
     /**
-     * @ORM\Column(type="integer")
+     * @ORM\Column(type="integer", name="NBPASSAGER")
      */
     private $nbPassager;
 
     /**
-     * @ORM\Column(type="string", length=50)
+     * @ORM\Column(type="string", length=50, name="ADRESSEDEP")
      */
     private $adresseDep;
 
     /**
-     * @ORM\Column(type="string", length=50)
+     * @ORM\Column(type="string", length=50, name="ADRESSEARR")
      */
     private $adresseArr;
 
     /**
-     * @ORM\Column(type="date")
+     * @ORM\Column(type="date", name="HEUREDEP")
      */
     private $heureDep;
 
     /**
-     * @ORM\Column(type="date")
+     * @ORM\Column(type="date", name="HEUREARR")
      */
     private $heureArr;
 
     /**
-     * @ORM\Column(type="boolean")
+     * @ORM\Column(type="boolean", name="ETATTRANSAC")
      */
     private $etatTransac;
 
     /**
-     * @ORM\Column(type="float")
+     * @ORM\Column(type="float", name="PRIX")
      */
     private $prix;
 
+    // , inversedBy="transactions"
     /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\Client", inversedBy="transactions")
+     * @ORM\ManyToOne(targetEntity="App\Entity\Client")
      * @ORM\JoinColumn(nullable=false)
      */
     private $idClient;
 
+    // , inversedBy="transactions"
     /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\Vehicule", inversedBy="transactions")
+     * @ORM\ManyToOne(targetEntity="App\Entity\Vehicule")
      * @ORM\JoinColumn(nullable=false)
      */
     private $immat;
 
+    // , inversedBy="transactions"
     /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\Chauffeur", inversedBy="transactions")
+     * @ORM\ManyToOne(targetEntity="App\Entity\Chauffeur")
      * @ORM\JoinColumn(nullable=false)
      */
     private $idChauffeur;

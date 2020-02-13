@@ -11,17 +11,17 @@ class Paiement
 {
     /**
      * @ORM\Id()
-     * @ORM\Column(type="integer")
+     * @ORM\Column(type="integer", name="IDCB")
      */
     private $id;
 
     /**
-     * @ORM\Column(type="string", length=10)
+     * @ORM\Column(type="string", length=10, name="TYPECB")
      */
     private $typeCB;
 
     /**
-     * @ORM\Column(type="date")
+     * @ORM\Column(type="date", name="DATECB")
      */
     private $dateCB;
 

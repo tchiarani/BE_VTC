@@ -14,37 +14,37 @@ class Employe
     /**
      * @ORM\Id()
      * @ORM\GeneratedValue()
-     * @ORM\Column(type="integer")
+     * @ORM\Column(type="integer", name="IDEMP")
      */
     private $id;
 
     /**
-     * @ORM\Column(type="string", length=10)
+     * @ORM\Column(type="string", length=30, name="NOMEMP")
      */
     private $nomEmp;
 
     /**
-     * @ORM\Column(type="string", length=30)
+     * @ORM\Column(type="string", length=30, name="PRENOMEMP")
      */
     private $prenomEmp;
 
     /**
-     * @ORM\Column(type="string", length=100)
+     * @ORM\Column(type="string", length=100, name="LOGINEMP")
      */
     private $loginEmp;
 
     /**
-     * @ORM\Column(type="string", length=100)
+     * @ORM\Column(type="string", length=100, name="PASSWORDEMP")
      */
     private $passwordEmp;
 
     /**
-     * @ORM\Column(type="string", length=20)
+     * @ORM\Column(type="string", length=20, name="TELEMP")
      */
     private $telEmp;
 
     /**
-     * @ORM\Column(type="integer")
+     * @ORM\Column(type="integer", name="TEMPTRAVAILEMP")
      */
     private $tempTravailEmp;
 
@@ -54,7 +54,7 @@ class Employe
     private $chauffeur;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="string", length=255, name="")
      */
     private $roles;
 

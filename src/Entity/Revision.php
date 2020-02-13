@@ -12,22 +12,22 @@ class Revision
     /**
      * @ORM\Id()
      * @ORM\GeneratedValue()
-     * @ORM\Column(type="integer")
+     * @ORM\Column(type="integer", name="IDREV")
      */
     private $id;
 
     /**
-     * @ORM\Column(type="date")
+     * @ORM\Column(type="date", name="DATEREV")
      */
     private $dateRev;
 
     /**
-     * @ORM\Column(type="string", length=100)
+     * @ORM\Column(type="string", length=100, name="AVIS")
      */
     private $avis;
 
     /**
-     * @ORM\Column(type="integer")
+     * @ORM\Column(type="integer", name="NBKMREV")
      */
     private $nbKmRev;
 

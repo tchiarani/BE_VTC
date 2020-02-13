@@ -13,7 +13,7 @@ class Permis
 {
     /**
      * @ORM\Id()
-     * @ORM\Column(type="string", length=10)
+     * @ORM\Column(type="string", length=10, name="PERMIS")
      */
     private $id;
 

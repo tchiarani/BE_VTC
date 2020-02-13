@@ -14,32 +14,32 @@ class Vehicule
     /**
      * @ORM\Id()
      * @ORM\GeneratedValue()
-     * @ORM\Column(type="string", length=10)
+     * @ORM\Column(type="string", length=10, name="IMMAT")
      */
     private $id;
 
     /**
-     * @ORM\Column(type="integer")
+     * @ORM\Column(type="integer", name="KILOMETRAGE")
      */
     private $kilometrage;
 
     /**
-     * @ORM\Column(type="boolean")
+     * @ORM\Column(type="boolean", name="ETATVEHICULE")
      */
     private $etatVehicule;
 
     /**
-     * @ORM\Column(type="integer")
+     * @ORM\Column(type="integer", name="NBPLACE")
      */
     private $nbPlace;
 
     /**
-     * @ORM\Column(type="integer")
+     * @ORM\Column(type="integer", name="NBKMCONSTRUCT")
      */
     private $nbKmConstruc;
 
     /**
-     * @ORM\Column(type="integer")
+     * @ORM\Column(type="integer", name="KMRESERVE")
      */
     private $kmReserve;
 
