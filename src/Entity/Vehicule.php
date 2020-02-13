@@ -21,49 +21,50 @@ class Vehicule
     /**
      * @ORM\Column(type="integer")
      */
-    private $Kilometrage;
+    private $kilometrage;
 
     /**
      * @ORM\Column(type="boolean")
      */
-    private $EtatVehicule;
+    private $etatVehicule;
 
     /**
      * @ORM\Column(type="integer")
      */
-    private $NbPlace;
+    private $nbPlace;
 
     /**
      * @ORM\Column(type="integer")
      */
-    private $NbKmConstruc;
+    private $nbKmConstruc;
 
     /**
      * @ORM\Column(type="integer")
      */
-    private $KmReserve;
+    private $kmReserve;
 
+    // , inversedBy="vehicules"
     /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\Permis", inversedBy="vehicules")
+     * @ORM\ManyToOne(targetEntity="App\Entity\Permis")
      * @ORM\JoinColumn(nullable=false)
      */
-    private $PermisNecessaire;
+    private $permisNecessaire;
 
-    /**
+    /*/**
      * @ORM\OneToMany(targetEntity="App\Entity\Revision", mappedBy="Immat", orphanRemoval=true)
-     */
+     *//*
     private $revisions;
 
     /**
      * @ORM\OneToMany(targetEntity="App\Entity\Transactions", mappedBy="Immat", orphanRemoval=true)
-     */
+     *//*
     private $transactions;
 
     public function __construct()
     {
         $this->revisions = new ArrayCollection();
         $this->transactions = new ArrayCollection();
-    }
+    }*/
 
     public function getId(): ?int
     {
@@ -75,88 +76,88 @@ class Vehicule
         return $this->id;
     }
 
-    public function setImmat(string $Immat): self
+    public function setImmat(string $immat): self
     {
-        $this->Immat = $Immat;
+        $this->id = $immat;
 
         return $this;
     }
 
     public function getKilometrage(): ?int
     {
-        return $this->Kilometrage;
+        return $this->kilometrage;
     }
 
-    public function setKilometrage(int $Kilometrage): self
+    public function setkilometrage(int $kilometrage): self
     {
-        $this->Kilometrage = $Kilometrage;
+        $this->kilometrage = $kilometrage;
 
         return $this;
     }
 
     public function getEtatVehicule(): ?bool
     {
-        return $this->EtatVehicule;
+        return $this->etatVehicule;
     }
 
-    public function setEtatVehicule(bool $EtatVehicule): self
+    public function setetatVehicule(bool $etatVehicule): self
     {
-        $this->EtatVehicule = $EtatVehicule;
+        $this->etatVehicule = $etatVehicule;
 
         return $this;
     }
 
     public function getNbPlace(): ?int
     {
-        return $this->NbPlace;
+        return $this->nbPlace;
     }
 
-    public function setNbPlace(int $NbPlace): self
+    public function setNbPlace(int $nbPlace): self
     {
-        $this->NbPlace = $NbPlace;
+        $this->nbPlace = $nbPlace;
 
         return $this;
     }
 
     public function getNbKmConstruc(): ?int
     {
-        return $this->NbKmConstruc;
+        return $this->nbKmConstruc;
     }
 
-    public function setNbKmConstruc(int $NbKmConstruc): self
+    public function setNbKmConstruc(int $nbKmConstruc): self
     {
-        $this->NbKmConstruc = $NbKmConstruc;
+        $this->nbKmConstruc = $nbKmConstruc;
 
         return $this;
     }
 
     public function getKmReserve(): ?int
     {
-        return $this->KmReserve;
+        return $this->kmReserve;
     }
 
-    public function setKmReserve(int $KmReserve): self
+    public function setKmReserve(int $kmReserve): self
     {
-        $this->KmReserve = $KmReserve;
+        $this->kmReserve = $kmReserve;
 
         return $this;
     }
 
     public function getPermisNecessaire(): ?Permis
     {
-        return $this->PermisNecessaire;
+        return $this->permisNecessaire;
     }
 
-    public function setPermisNecessaire(?Permis $PermisNecessaire): self
+    public function setpermisNecessaire(?Permis $permisNecessaire): self
     {
-        $this->PermisNecessaire = $PermisNecessaire;
+        $this->permisNecessaire = $permisNecessaire;
 
         return $this;
     }
 
-    /**
+    /*/**
      * @return Collection|Revision[]
-     */
+     *//*
     public function getRevisions(): Collection
     {
         return $this->revisions;
@@ -187,7 +188,7 @@ class Vehicule
 
     /**
      * @return Collection|Transactions[]
-     */
+     *//*
     public function getTransactions(): Collection
     {
         return $this->transactions;
@@ -214,5 +215,5 @@ class Vehicule
         }
 
         return $this;
-    }
+    }*/
 }
