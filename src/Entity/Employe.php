@@ -2,6 +2,8 @@
 
 namespace App\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -12,272 +14,172 @@ class Employe
     /**
      * @ORM\Id()
      * @ORM\GeneratedValue()
-<<<<<<< HEAD
-     * @ORM\Column(type="integer")
+     * @ORM\Column(type="integer", name="IDEMP")
      */
     private $id;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="string", length=30, name="NOMEMP")
      */
     private $nomEmp;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="string", length=30, name="PRENOMEMP")
      */
     private $prenomEmp;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="string", length=100, name="LOGINEMP")
      */
-    private $login;
+    private $loginEmp;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="string", length=100, name="PASSWORDEMP")
      */
-    private $password;
-=======
-     * @ORM\Column(type="integer", name="IdEmp")
-     */
-    private $idEmp;
+    private $passwordEmp;
 
     /**
-     * @ORM\Column(type="string", length=10)
+     * @ORM\Column(type="string", length=20, name="TELEMP")
      */
-    private $NomEmp;
-
-    /**
-     * @ORM\Column(type="string", length=30)
-     */
-    private $PrenomEmp;
-
-    /**
-     * @ORM\Column(type="string", length=100)
-     */
-    private $LoginEmp;
-
-    /**
-     * @ORM\Column(type="string", length=100)
-     */
-    private $PasswordEmp;
->>>>>>> bdd
-
-    /**
-     * @ORM\Column(type="string", length=20)
-     */
-<<<<<<< HEAD
     private $telEmp;
-=======
-    private $TelEmp;
->>>>>>> bdd
 
     /**
-     * @ORM\Column(type="integer")
+     * @ORM\Column(type="integer", name="TEMPTRAVAILEMP")
      */
-<<<<<<< HEAD
-    private $tempsTravail;
+    private $tempTravailEmp;
 
     /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\Role", inversedBy="employes")
+     * @ORM\OneToMany(targetEntity="App\Entity\Chauffeur", mappedBy="employe")
      */
-    private $role;
+    private $chauffeur;
+
+    /**
+     * @ORM\Column(type="string", length=255, name="ROLES")
+     */
+    private $roles;
+
+    public function __construct()
+    {
+        $this->chauffeur = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
         return $this->id;
-=======
-    private $TempTravailEmp;
-
-    /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\Roles", inversedBy="employes")
-     * @ORM\JoinColumn(nullable=false)
-     */
-    private $NomRole;
-
-    /**
-     * @ORM\OneToOne(targetEntity="App\Entity\Chauffeur", mappedBy="IdEmp", cascade={"persist", "remove"})
-     */
-    private $chauffeur;
-
-    public function getId(): ?int
-    {
-        return $this->idEmp;
->>>>>>> bdd
     }
 
-    public function getNomEmp(): ?string
+    public function getNom(): ?string
     {
-<<<<<<< HEAD
         return $this->nomEmp;
     }
 
-    public function setNomEmp(string $nomEmp): self
+    public function setNom(string $nomEmp): self
     {
         $this->nomEmp = $nomEmp;
-=======
-        return $this->NomEmp;
-    }
-
-    public function setNomEmp(string $NomEmp): self
-    {
-        $this->NomEmp = $NomEmp;
->>>>>>> bdd
 
         return $this;
     }
 
-    public function getPrenomEmp(): ?string
+    public function getPrenom(): ?string
     {
-<<<<<<< HEAD
         return $this->prenomEmp;
     }
 
-    public function setPrenomEmp(string $prenomEmp): self
+    public function setPrenom(string $prenomEmp): self
     {
         $this->prenomEmp = $prenomEmp;
-=======
-        return $this->PrenomEmp;
-    }
-
-    public function setPrenomEmp(string $PrenomEmp): self
-    {
-        $this->PrenomEmp = $PrenomEmp;
->>>>>>> bdd
 
         return $this;
     }
 
-<<<<<<< HEAD
     public function getLogin(): ?string
     {
-        return $this->login;
+        return $this->loginEmp;
     }
 
-    public function setLogin(string $login): self
+    public function setLogin(string $loginEmp): self
     {
-        $this->login = $login;
-=======
-    public function getLoginEmp(): ?string
-    {
-        return $this->LoginEmp;
-    }
-
-    public function setLoginEmp(string $LoginEmp): self
-    {
-        $this->LoginEmp = $LoginEmp;
->>>>>>> bdd
+        $this->loginEmp = $loginEmp;
 
         return $this;
     }
 
-<<<<<<< HEAD
     public function getPassword(): ?string
     {
-        return $this->password;
+        return $this->passwordEmp;
     }
 
-    public function setPassword(string $password): self
+    public function setPassword(string $passwordEmp): self
     {
-        $this->password = $password;
-=======
-    public function getPasswordEmp(): ?string
-    {
-        return $this->PasswordEmp;
-    }
-
-    public function setPasswordEmp(string $PasswordEmp): self
-    {
-        $this->PasswordEmp = $PasswordEmp;
->>>>>>> bdd
+        $this->passwordEmp = $passwordEmp;
 
         return $this;
     }
 
-    public function getTelEmp(): ?string
+    public function getTel(): ?string
     {
-<<<<<<< HEAD
         return $this->telEmp;
     }
 
-    public function setTelEmp(string $telEmp): self
+    public function setTel(string $telEmp): self
     {
         $this->telEmp = $telEmp;
-=======
-        return $this->TelEmp;
-    }
-
-    public function setTelEmp(string $TelEmp): self
-    {
-        $this->TelEmp = $TelEmp;
->>>>>>> bdd
 
         return $this;
     }
 
-<<<<<<< HEAD
-    public function getTempsTravail(): ?int
+    public function getTempTravail(): ?int
     {
-        return $this->tempsTravail;
+        return $this->tempTravailEmp;
     }
 
-    public function setTempsTravail(int $tempsTravail): self
+    public function setTempTravail(int $tempTravailEmp): self
     {
-        $this->tempsTravail = $tempsTravail;
-=======
-    public function getTempTravailEmp(): ?int
-    {
-        return $this->TempTravailEmp;
-    }
-
-    public function setTempTravailEmp(int $TempTravailEmp): self
-    {
-        $this->TempTravailEmp = $TempTravailEmp;
->>>>>>> bdd
+        $this->tempTravailEmp = $tempTravailEmp;
 
         return $this;
     }
 
-<<<<<<< HEAD
-    public function getRole(): ?Role
-    {
-        return $this->role;
-    }
-
-    public function setRole(?Role $role): self
-    {
-        $this->role = $role;
-
-        return $this;
-    }
-}
-=======
-    public function getNomRole(): ?Roles
-    {
-        return $this->NomRole;
-    }
-
-    public function setNomRole(?Roles $NomRole): self
-    {
-        $this->NomRole = $NomRole;
-
-        return $this;
-    }
-
-    public function getChauffeur(): ?Chauffeur
+    /**
+     * @return Collection|Chauffeur[]
+     */
+    public function getChauffeur(): Collection
     {
         return $this->chauffeur;
     }
 
-    public function setChauffeur(Chauffeur $chauffeur): self
+    public function addChauffeur(Chauffeur $chauffeur): self
     {
-        $this->chauffeur = $chauffeur;
-
-        // set the owning side of the relation if necessary
-        if ($chauffeur->getIdEmp() !== $this) {
-            $chauffeur->setIdEmp($this);
+        if (!$this->chauffeur->contains($chauffeur)) {
+            $this->chauffeur[] = $chauffeur;
+            $chauffeur->setEmploye($this);
         }
 
         return $this;
     }
+
+    public function removeChauffeur(Chauffeur $chauffeur): self
+    {
+        if ($this->chauffeur->contains($chauffeur)) {
+            $this->chauffeur->removeElement($chauffeur);
+            // set the owning side to null (unless already changed)
+            if ($chauffeur->getEmploye() === $this) {
+                $chauffeur->setEmploye(null);
+            }
+        }
+
+        return $this;
+    }
+
+    public function getRoles(): ?string
+    {
+        return $this->roles;
+    }
+
+    public function setRoles(string $roles): self
+    {
+        $this->roles = $roles;
+
+        return $this;
+    }
 }
->>>>>>> bdd
