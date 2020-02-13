@@ -19,23 +19,24 @@ class Revision
     /**
      * @ORM\Column(type="date")
      */
-    private $DateRev;
+    private $dateRev;
 
     /**
      * @ORM\Column(type="string", length=100)
      */
-    private $Avis;
+    private $avis;
 
     /**
      * @ORM\Column(type="integer")
      */
-    private $NbKmRev;
+    private $nbKmRev;
 
+    // , inversedBy="revisions"
     /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\Vehicule", inversedBy="revisions")
+     * @ORM\ManyToOne(targetEntity="App\Entity\Vehicule")
      * @ORM\JoinColumn(nullable=false)
      */
-    private $Immat;
+    private $immat;
 
     public function getId(): ?int
     {
@@ -44,48 +45,48 @@ class Revision
 
     public function getDateRev(): ?\DateTimeInterface
     {
-        return $this->DateRev;
+        return $this->dateRev;
     }
 
-    public function setDateRev(\DateTimeInterface $DateRev): self
+    public function setDateRev(\DateTimeInterface $dateRev): self
     {
-        $this->DateRev = $DateRev;
+        $this->dateRev = $dateRev;
 
         return $this;
     }
 
     public function getAvis(): ?string
     {
-        return $this->Avis;
+        return $this->avis;
     }
 
-    public function setAvis(string $Avis): self
+    public function setAvis(string $avis): self
     {
-        $this->Avis = $Avis;
+        $this->avis = $avis;
 
         return $this;
     }
 
     public function getNbKmRev(): ?int
     {
-        return $this->NbKmRev;
+        return $this->nbKmRev;
     }
 
-    public function setNbKmRev(int $NbKmRev): self
+    public function setnbKmRev(int $nbKmRev): self
     {
-        $this->NbKmRev = $NbKmRev;
+        $this->nbKmRev = $nbKmRev;
 
         return $this;
     }
 
-    public function getImmat(): ?Vehicule
+    public function getVehicule(): ?Vehicule
     {
-        return $this->Immat;
+        return $this->immat;
     }
 
-    public function setImmat(?Vehicule $Immat): self
+    public function setVehicule(?Vehicule $vehicule): self
     {
-        $this->Immat = $Immat;
+        $this->immat = $vehicule;
 
         return $this;
     }
