@@ -43,12 +43,12 @@ class Revision
         return $this->id;
     }
 
-    public function getDateRev(): ?\DateTimeInterface
+    public function getDate(): ?\DateTimeInterface
     {
         return $this->dateRev;
     }
 
-    public function setDateRev(\DateTimeInterface $dateRev): self
+    public function setDate(\DateTimeInterface $dateRev): self
     {
         $this->dateRev = $dateRev;
 
@@ -67,12 +67,12 @@ class Revision
         return $this;
     }
 
-    public function getNbKmRev(): ?int
+    public function getNbKm(): ?int
     {
         return $this->nbKmRev;
     }
 
-    public function setnbKmRev(int $nbKmRev): self
+    public function setNbKm(int $nbKmRev): self
     {
         $this->nbKmRev = $nbKmRev;
 
