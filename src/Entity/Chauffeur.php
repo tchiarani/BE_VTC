@@ -57,7 +57,7 @@ class Chauffeur
         return $this->chauffeurActif;
     }
 
-    public function setchauffeurActif(bool $chauffeurActif): self
+    public function setChauffeurActif(bool $chauffeurActif): self
     {
         $this->chauffeurActif = $chauffeurActif;
 
