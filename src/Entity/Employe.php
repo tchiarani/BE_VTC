@@ -54,7 +54,7 @@ class Employe
     private $chauffeur;
 
     /**
-     * @ORM\Column(type="string", length=255, name="")
+     * @ORM\Column(type="string", length=255, name="ROLES")
      */
     private $roles;
 
