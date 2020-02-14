@@ -38,14 +38,9 @@ class EmployeController extends AbstractController
         $form->handleRequest($request);
 
         if($form->isSubmitted() && $form->isValid()){
-//            if ($antiSpam->isSpam($employe->getContent())) {
-//                $this->addFlash('danger',$translator->trans('controller.spam.error'));
-//                return $this->render('employe/add.html.twig', array('form'=>$form->createView()));
-//            }
-//
             $em->persist($employe);
             $em->flush();
-           // $this->addFlash('success','Success');
+            $this->addFlash('success','Success');
             return $this->redirectToRoute('list_employe');
         }
         return $this->render('employe/add.html.twig', array('form'=>$form->createView()));

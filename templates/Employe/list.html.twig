@@ -1,7 +1,26 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    {% for employe in employes %}
-        {{  employe.nom }}
-    {% endfor %}
+
+
+    <table class="table">
+        <thead>
+        <tr>
+            <th>Nom</th>
+            <th>Prénom</th>
+            <th>Téléphone</th>
+            <th>Temps travaillé</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for employe in employes %}
+            <tr>
+                <td>{{ employe.nom }}</td>
+                <td>{{ employe.prenom }}</td>
+                <td>{{ employe.tel }}</td>
+                <td>{{ employe.tempTravail }}</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
 {% endblock %}
