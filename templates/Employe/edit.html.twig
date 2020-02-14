@@ -1,0 +1,15 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div class="text-center mx-auto">
+        {{ form_start(form) }}
+            {{ form_row(form.nom) }}
+            {{ form_row(form.prenom) }}
+            {{ form_row(form.tel) }}
+            {{ form_row(form.tempTravail) }}
+            {{ form_row(form.login) }}
+            {{ form_row(form.password) }}
+            {{ form_row(form.roles) }}
+        {{ form_end(form) }}
+    </div>
+{% endblock %}

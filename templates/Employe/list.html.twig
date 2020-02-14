@@ -8,8 +8,8 @@
         <tr>
             <th>Nom</th>
             <th>Prénom</th>
-            <th>Téléphone</th>
             <th>Temps travaillé</th>
+            <th>Voir plus</th>
         </tr>
         </thead>
         <tbody>
@@ -17,8 +17,8 @@
             <tr>
                 <td>{{ employe.nom }}</td>
                 <td>{{ employe.prenom }}</td>
-                <td>{{ employe.tel }}</td>
                 <td>{{ employe.tempTravail }}</td>
+                <td><a class="btn btn-dark" href="{{ path('view_employe', {'id': employe.id})}}" role="button">Voir plus</a></td>
             </tr>
         {% endfor %}
         </tbody>

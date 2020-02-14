@@ -1,0 +1,12 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <p>Nom : {{ employe.nom }}</p>
+    <p>Prénom : {{ employe.prenom }}</p>
+    <p>Téléphone : {{ employe.tel }}</p>
+    <p>Role : {{ employe.roles }}</p>
+    <p>Temps travaillé : {{ employe.tempTravail }}</p>
+
+    <a class="btn btn-dark" href="{{ path('edit_employe', {'id': employe.id})}}" role="button">Modifier</a>
+
+{% endblock %}
