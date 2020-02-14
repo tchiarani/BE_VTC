@@ -15,24 +15,31 @@ class EmployeType extends AbstractType
         $builder
             ->add('nom', TextType::class, [
                 'label' => 'Nom',
+                'attr' => ['class' => 'form-control w-100']
             ])
             ->add('prenom', TextType::class, [
                 'label' => 'Prénom',
+                'attr' => ['class' => 'form-control w-100']
             ])
             ->add('tel', TextType::class, [
                 'label' => 'Téléphone',
+                'attr' => ['class' => 'form-control w-100']
             ])
             ->add('tempTravail', TextType::class, [
                 'label' => 'Temps travaillé',
+                'attr' => ['class' => 'form-control w-100']
             ])
             ->add('login', TextType::class, [
-                'label' => 'Login',
+                'label' => "Nom d'utilisateur",
+                'attr' => ['class' => 'form-control w-100']
             ])
             ->add('password', TextType::class, [
-                'label' => 'Password',
+                'label' => 'Mot de passe',
+                'attr' => ['class' => 'form-control w-100']
             ])
             ->add('roles', TextType::class, [
-                'label' => 'Roles',
+                'label' => 'Rôles',
+                'attr' => ['class' => 'form-control w-100']
             ]);
 
 

@@ -1,15 +1,51 @@
 {% extends 'base.html.twig' %}
 
+{% block title %}ff{% endblock %}
+
 {% block body %}
-    <div class="text-center mx-auto">
-        {{ form_start(form) }}
-        {{ form_row(form.nom) }}
-        {{ form_row(form.prenom) }}
-        {{ form_row(form.tel) }}
-        {{ form_row(form.tempTravail) }}
-        {{ form_row(form.login) }}
-        {{ form_row(form.password) }}
-        {{ form_row(form.roles) }}
+
+    <h3 class="mb-4">Ajout d'un employé :</h3>
+
+    <form class="w-50">
+        <div class="row">
+            <div class="col-6">
+                {{ form_start(form) }}
+                <div class="form-group">
+                    {{ form_label(form.nom) }}
+                        {{ form_widget(form.nom) }}
+                </div>
+                <div class="form-group">
+                    {{ form_row(form.prenom) }}
+                </div>
+                <div class="form-group">
+                    {{ form_row(form.tel) }}
+                </div>
+                <div class="form-group">
+                    {{ form_label(form.tempTravail) }}
+                    <div class="input-group w-75">
+
+                        {{ form_widget(form.tempTravail) }}
+                        <div class="input-group-append">
+                            <span class="input-group-text" id="basic-addon2">heure(s)</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-6">
+                <div class="form-group">
+                    {{ form_row(form.login) }}
+                </div>
+                <div class="form-group">
+                    {{ form_row(form.password) }}
+                </div>
+                <div class="form-group">
+                    {{ form_row(form.roles) }}
+                </div>
+            </div>
+        </div>
+        <div class="text-center mt-3">
+            {{ form_end(form) }}
+        </div>
 
         {#        <div>#}
 {#            {{ form_label(form.content) }}#}
@@ -27,6 +63,5 @@
 {#            </div>#}
 {#        </div>#}
 {#        {{ form_row(form.categories) }}#}
-        {{ form_end(form) }}
-    </div>
+    </form>
 {% endblock %}
