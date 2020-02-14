@@ -1,7 +1,7 @@
 security:
     encoders:
         App\Entity\Employe:
-            algorithm: auto
+            algorithm: pbkdf2
 
     # https://symfony.com/doc/current/security.html#where-do-users-come-from-user-providers
     providers:
@@ -18,11 +18,11 @@ security:
         main:
             pattern: ^/
             form_login:
-                check_path: utilisateur-login-check
-                login_path: utilisateur-login
+                check_path: security-login-check
+                login_path: security-login
             logout:
-                path: utilisateur-logout
-                target: home-index
+                path: security-logout
+                target: home
                 invalidate_session: false
             anonymous: ~
 
@@ -39,9 +39,9 @@ security:
     # - { path: ^/profile, roles: ROLE_USER }
 
     role_hierarchy:
-        ROLE_ADMIN: ROLE_USER
+        ROLE_ADMIN: [ROLE_USER, ROLE_HOTLINER, ROLE_CHAUFFEUR, ROLE_GARAGISTE, ROLE_COMPTABLE, ROLE_RH]
         ROLE_HOTLINER: ROLE_USER
         ROLE_CHAUFFEUR: ROLE_USER
-        ROLE_GARAGE: ROLE_USER
-        ROLE_COMPTABILITE: ROLE_USER
+        ROLE_GARAGISTE: ROLE_USER
+        ROLE_COMPTABLE: ROLE_USER
         ROLE_RH: ROLE_USER
