@@ -13,7 +13,6 @@ class Vehicule
 {
     /**
      * @ORM\Id()
-     * @ORM\GeneratedValue()
      * @ORM\Column(type="string", length=10, name="IMMAT")
      */
     private $id;
@@ -66,12 +65,12 @@ class Vehicule
         $this->transactions = new ArrayCollection();
     }*/
 
-    public function getId(): ?int
+    public function getId(): ?string
     {
         return $this->id;
     }
 
-    public function getImmat(): ?int
+    public function getImmat(): ?string
     {
         return $this->id;
     }
@@ -88,7 +87,7 @@ class Vehicule
         return $this->kilometrage;
     }
 
-    public function setkilometrage(int $kilometrage): self
+    public function setKilometrage(int $kilometrage): self
     {
         $this->kilometrage = $kilometrage;
 
@@ -100,7 +99,7 @@ class Vehicule
         return $this->etatVehicule;
     }
 
-    public function setetatVehicule(bool $etatVehicule): self
+    public function setEtatVehicule(bool $etatVehicule): self
     {
         $this->etatVehicule = $etatVehicule;
 

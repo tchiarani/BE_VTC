@@ -19,17 +19,17 @@ class Client
     private $id;
 
     /**
-     * @ORM\Column(type="string", length=255, name="nomClient", name="NOMCLIENT")
+     * @ORM\Column(type="string", length=30, name="nomClient", name="NOMCLIENT")
      */
     private $nomClient;
 
     /**
-     * @ORM\Column(type="string", length=255, name="prenomClient", name="PRENOMCLIENT")
+     * @ORM\Column(type="string", length=30, name="prenomClient", name="PRENOMCLIENT")
      */
     private $prenomClient;
 
     /**
-     * @ORM\Column(type="string", length=255, name="PORTABLE")
+     * @ORM\Column(type="string", length=20, name="PORTABLE")
      */
     private $portable;
 /*

@@ -10,7 +10,7 @@ use Doctrine\Migrations\AbstractMigration;
 /**
  * Auto-generated Migration: Please modify to your needs!
  */
-final class Version20200213102530 extends AbstractMigration
+final class Version20200214090851 extends AbstractMigration
 {
     public function getDescription() : string
     {
@@ -27,12 +27,12 @@ final class Version20200213102530 extends AbstractMigration
         $this->addSql('CREATE SEQUENCE employe_IDEMP_seq START WITH 1 MINVALUE 1 INCREMENT BY 1');
         $this->addSql('CREATE SEQUENCE revision_IDREV_seq START WITH 1 MINVALUE 1 INCREMENT BY 1');
         $this->addSql('CREATE SEQUENCE transactions_IDTRANSACTION_seq START WITH 1 MINVALUE 1 INCREMENT BY 1');
-        $this->addSql('CREATE SEQUENCE vehicule_IMMAT_seq START WITH 1 MINVALUE 1 INCREMENT BY 1');
         $this->addSql('CREATE TABLE chauffeur (permis_id VARCHAR2(10) NOT NULL, employe_id NUMBER(10) NOT NULL, IDCHAUFFEUR NUMBER(10) NOT NULL, CHAUFFEURACTIF NUMBER(1) NOT NULL, PRIMARY KEY(IDCHAUFFEUR))');
         $this->addSql('CREATE INDEX IDX_5CA777B83594A24E ON chauffeur (permis_id)');
         $this->addSql('CREATE INDEX IDX_5CA777B81B65292 ON chauffeur (employe_id)');
-        $this->addSql('CREATE TABLE client (IDCLIENT NUMBER(10) NOT NULL, NOMCLIENT VARCHAR2(255) NOT NULL, PRENOMCLIENT VARCHAR2(255) NOT NULL, PORTABLE VARCHAR2(255) NOT NULL, PRIMARY KEY(IDCLIENT))');
-        $this->addSql('CREATE TABLE employe (IDEMP NUMBER(10) NOT NULL, NOMEMP VARCHAR2(30) NOT NULL, PRENOMEMP VARCHAR2(30) NOT NULL, LOGINEMP VARCHAR2(100) NOT NULL, PASSWORDEMP VARCHAR2(100) NOT NULL, TELEMP VARCHAR2(20) NOT NULL, TEMPTRAVAILEMP NUMBER(10) NOT NULL, ROLES VARCHAR2(255) NOT NULL, PRIMARY KEY(IDEMP))');
+        $this->addSql('CREATE TABLE client (IDCLIENT NUMBER(10) NOT NULL, NOMCLIENT VARCHAR2(30) NOT NULL, PRENOMCLIENT VARCHAR2(30) NOT NULL, PORTABLE VARCHAR2(20) NOT NULL, PRIMARY KEY(IDCLIENT))');
+        $this->addSql('CREATE TABLE employe (IDEMP NUMBER(10) NOT NULL, NOMEMP VARCHAR2(30) NOT NULL, PRENOMEMP VARCHAR2(30) NOT NULL, LOGINEMP VARCHAR2(100) NOT NULL, PASSWORDEMP VARCHAR2(100) NOT NULL, TELEMP VARCHAR2(20) NOT NULL, TEMPTRAVAILEMP NUMBER(10) NOT NULL, ROLES CLOB NOT NULL, PRIMARY KEY(IDEMP))');
+        $this->addSql('COMMENT ON COLUMN employe.ROLES IS \'(DC2Type:json)\'');
         $this->addSql('CREATE TABLE inclus (permis_id VARCHAR2(10) NOT NULL, permis_inclus_id VARCHAR2(10) NOT NULL, PRIMARY KEY(permis_id, permis_inclus_id))');
         $this->addSql('CREATE INDEX IDX_4B21F1813594A24E ON inclus (permis_id)');
         $this->addSql('CREATE INDEX IDX_4B21F181BBEF1182 ON inclus (permis_inclus_id)');
@@ -79,7 +79,6 @@ final class Version20200213102530 extends AbstractMigration
         $this->addSql('DROP SEQUENCE employe_IDEMP_seq');
         $this->addSql('DROP SEQUENCE revision_IDREV_seq');
         $this->addSql('DROP SEQUENCE transactions_IDTRANSACTION_seq');
-        $this->addSql('DROP SEQUENCE vehicule_IMMAT_seq');
         $this->addSql('DROP TABLE chauffeur');
         $this->addSql('DROP TABLE client');
         $this->addSql('DROP TABLE employe');
