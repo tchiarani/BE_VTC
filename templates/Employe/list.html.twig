@@ -1,11 +1,6 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <div class="example-wrapper">
-        <h1>Hello {{ controller_name }}! ✅</h1>
-
-    </div>
-
     {% for employe in employes %}
         {{  employe.nom }}
     {% endfor %}

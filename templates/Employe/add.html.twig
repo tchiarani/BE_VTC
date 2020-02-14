@@ -1,0 +1,32 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div class="text-center mx-auto">
+        {{ form_start(form) }}
+        {{ form_row(form.nom) }}
+        {{ form_row(form.prenom) }}
+        {{ form_row(form.tel) }}
+        {{ form_row(form.tempTravail) }}
+        {{ form_row(form.login) }}
+        {{ form_row(form.password) }}
+        {{ form_row(form.roles) }}
+
+        {#        <div>#}
+{#            {{ form_label(form.content) }}#}
+{#            {{ form_errors(form.content) }}#}
+{#            {{ form_widget(form.content) }}#}
+{#        </div>#}
+{#        {{ form_row(form.nbViews) }}#}
+{#        <div class="form-group">#}
+{#            <div class="custom-control custom-checkbox">#}
+{#                <div class="custom-control custom-switch">#}
+{#                    {{ form_label(form.published) }}#}
+{#                    {{ form_widget(form.published) }}#}
+{#                    {{ form_errors(form.published) }}#}
+{#                </div>#}
+{#            </div>#}
+{#        </div>#}
+{#        {{ form_row(form.categories) }}#}
+        {{ form_end(form) }}
+    </div>
+{% endblock %}

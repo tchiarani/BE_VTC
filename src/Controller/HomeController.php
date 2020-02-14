@@ -12,12 +12,15 @@ class HomeController extends AbstractController
     /**
      * @Route("/", name="home")
      */
-    public function index()
+    public function index(EntityManagerInterface $em)
     {
+        $employes = $em->getRepository('App:Client')->findAll();
         return $this->render('index.html.twig', [
             'controller_name' => 'HomeController',
+            'employes' => $employes,
         ]);
     }
+
 
     /**
      * @Route("/test", name="test")

@@ -13,23 +13,26 @@ class EmployeType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('nomEmp', TextType::class, [
+            ->add('nom', TextType::class, [
                 'label' => 'Nom',
             ])
-            ->add('prenomEmp', TextType::class, [
+            ->add('prenom', TextType::class, [
                 'label' => 'Prénom',
             ])
-            ->add('telEmp', TextType::class, [
+            ->add('tel', TextType::class, [
                 'label' => 'Téléphone',
             ])
-            ->add('tempTravailEmp', TextType::class, [
+            ->add('tempTravail', TextType::class, [
                 'label' => 'Temps travaillé',
             ])
-            ->add('loginEmp', TextType::class, [
+            ->add('login', TextType::class, [
                 'label' => 'Login',
             ])
-            ->add('passwordEmp', TextType::class, [
-                'label' => 'Passeword',
+            ->add('password', TextType::class, [
+                'label' => 'Password',
+            ])
+            ->add('roles', TextType::class, [
+                'label' => 'Roles',
             ]);
 
 

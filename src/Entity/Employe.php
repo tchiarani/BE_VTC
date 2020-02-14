@@ -152,7 +152,7 @@ class Employe
     {
         if (!$this->chauffeur->contains($chauffeur)) {
             $this->chauffeur[] = $chauffeur;
-            $chauffeur->setEmploye($this);
+            $chauffeur->setIdEmp($this);
         }
 
         return $this;
@@ -163,8 +163,8 @@ class Employe
         if ($this->chauffeur->contains($chauffeur)) {
             $this->chauffeur->removeElement($chauffeur);
             // set the owning side to null (unless already changed)
-            if ($chauffeur->getEmploye() === $this) {
-                $chauffeur->setEmploye(null);
+            if ($chauffeur->getIdEmp() === $this) {
+                $chauffeur->setIdEmp(null);
             }
         }
 
