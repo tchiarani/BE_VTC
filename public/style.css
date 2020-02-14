@@ -1,0 +1,8 @@
+@import url("https://fonts.googleapis.com/css?family=Comfortaa|Montserrat&display=swap");
+* {
+    font-family: Montserrat;
+}
+
+.navbar-brand {
+    font-family: Comfortaa;
+}
